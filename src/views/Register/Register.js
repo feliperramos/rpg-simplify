@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Link as RouterLink, withRouter } from "react-router-dom";
-import { PropTypes } from "prop-types";
+import { Link as RouterLink } from "react-router-dom";
 import validate from "validate.js";
 
 import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import Checkbox from "@material-ui/core/Checkbox";
+import IconButton from "@material-ui/core/IconButton";
+import Link from "@material-ui/core/Link";
 
-import { loginStyle } from "../../assets/styles/styles";
-import { schema } from "./schema";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
 import { ApiRequest } from "../../api/API";
+import { registerStyle } from "../../assets/styles/styles";
+import { schema } from "./schema";
 
-const Login = ({ history }) => {
-  const classes = loginStyle();
-
+const Register = ({ history }) => {
+  const classes = registerStyle();
   const [form, setForm] = useState({
     isValid: false,
     values: {},
@@ -52,14 +54,12 @@ const Login = ({ history }) => {
     }));
   };
 
-  const handleLogin = async () => {
-    const req = await ApiRequest("POST", "auth", form.values);
+  const handleBack = () => {
+    history.push("/");
+  };
 
-    if (req.status === 200) {
-      localStorage.setItem("jwt_token", req.data.token);
-
-      history.push("/dashboard");
-    }
+  const handleSignUp = async () => {
+    console.log(form.values);
   };
 
   const hasError = (field) =>
@@ -84,10 +84,15 @@ const Login = ({ history }) => {
         </Grid>
         <Grid className={classes.content} item lg={7} xs={12}>
           <div className={classes.content}>
+            <div className={classes.contentHeader}>
+              <IconButton onClick={handleBack}>
+                <ArrowBackIcon />
+              </IconButton>
+            </div>
             <div className={classes.contentBody}>
               <div className={classes.form}>
                 <Typography className={classes.title} variant="h2">
-                  Entrar
+                  Cadastrar-se
                 </Typography>
                 <TextField
                   className={classes.textField}
@@ -97,8 +102,20 @@ const Login = ({ history }) => {
                   label="Email"
                   name="email"
                   onChange={handleChange}
-                  type="text"
+                  type="email"
                   value={form.values.email || ""}
+                  variant="outlined"
+                />
+                <TextField
+                  className={classes.textField}
+                  error={hasError("name")}
+                  fullWidth
+                  helperText={hasError("name") ? form.errors.name[0] : null}
+                  label="Nome"
+                  name="name"
+                  onChange={handleChange}
+                  type="text"
+                  value={form.values.name || ""}
                   variant="outlined"
                 />
                 <TextField
@@ -115,24 +132,43 @@ const Login = ({ history }) => {
                   value={form.values.password || ""}
                   variant="outlined"
                 />
+                <div className={classes.policy}>
+                  <Checkbox
+                    checked={form.values.terms || false}
+                    className={classes.policyCheckbox}
+                    color="primary"
+                    name="terms"
+                    onChange={handleChange}
+                  />
+                  <Typography
+                    className={classes.policyText}
+                    color="textSecondary"
+                    variant="body1"
+                  >
+                    {"Leio e aceito os "}
+                    <Link
+                      color="primary"
+                      component={RouterLink}
+                      to="#"
+                      underline="always"
+                      variant="h6"
+                    >
+                      Termos e Serviços
+                    </Link>
+                  </Typography>
+                </div>
                 <Button
                   className={classes.signInButton}
                   color="primary"
-                  disabled={!form.isValid}
+                  diasbled={!form.isValid}
                   fullWidth
                   size="large"
                   type="submit"
                   variant="contained"
-                  onClick={handleLogin}
+                  onClick={handleSignUp}
                 >
-                  Entrar
+                  Criar conta
                 </Button>
-                <Typography color="textSecondary" variant="body1">
-                  {"Não têm uma conta? "}
-                  <Link component={RouterLink} to="/signup" variant="h6">
-                    Cadastre-se
-                  </Link>
-                </Typography>
               </div>
             </div>
           </div>
@@ -142,8 +178,4 @@ const Login = ({ history }) => {
   );
 };
 
-Login.propTypes = {
-  history: PropTypes.object,
-};
-
-export default withRouter(Login);
+export default Register;

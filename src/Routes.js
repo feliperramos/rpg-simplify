@@ -4,12 +4,13 @@ import { Switch } from "react-router-dom";
 import { PublicRoute } from "./components";
 import { Minimal } from "./layout";
 
-import { Login } from "./views";
+import { Login, Register } from "./views";
 
 const Routes = () => {
   return (
     <Switch>
       <PublicRoute component={Login} exact layout={Minimal} path="/" />
+      <PublicRoute component={Register} exact layout={Minimal} path="/signup" />
     </Switch>
   );
 };
