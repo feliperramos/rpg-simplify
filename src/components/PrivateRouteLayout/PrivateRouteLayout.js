@@ -11,7 +11,7 @@ const PrivateRouteLayout = ({
     <Route
       {...rest}
       render={(matchProps) =>
-        localStorage.getItem("access_token") ? (
+        localStorage.getItem("jwt_token") ? (
           <Layout>
             <Component {...matchProps} />
           </Layout>

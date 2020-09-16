@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Router } from "react-router-dom";
-import { createBrowserHistory } from "history";
+import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/styles";
 import validate from "validate.js";
 
@@ -9,9 +8,7 @@ import "react-perfect-scrollbar/dist/css/styles.css";
 import "./assets/scss/index.scss";
 import Routes from "./Routes";
 import validators from "./common/validators";
-import { Store } from "./store";
-
-const browserHistory = createBrowserHistory();
+// import { Store } from "./store";
 
 validate.validators = {
   ...validate.validators,
@@ -22,7 +19,7 @@ export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Router history={browserHistory}>
+        <Router>
           <Routes />
         </Router>
       </ThemeProvider>

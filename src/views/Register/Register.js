@@ -59,7 +59,18 @@ const Register = ({ history }) => {
   };
 
   const handleSignUp = async () => {
-    console.log(form.values);
+    try {
+      const resp = await ApiRequest("POST", "users", form.values);
+
+      if (resp.status === 200 && resp.data.status === true) {
+        localStorage.setItem("jwt_token", resp.data.token);
+
+        history.push("/dashboard");
+        return resp;
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const hasError = (field) =>
@@ -160,7 +171,7 @@ const Register = ({ history }) => {
                 <Button
                   className={classes.signInButton}
                   color="primary"
-                  diasbled={!form.isValid}
+                  disabled={!form.isValid}
                   fullWidth
                   size="large"
                   type="submit"
