@@ -2,7 +2,7 @@ import React from "react";
 import { Switch } from "react-router-dom";
 
 import { PublicRoute, PrivateRoute } from "./components";
-import { Minimal } from "./layout";
+import { Minimal, Main } from "./layout";
 
 import { Login, Register, Dashboard } from "./views";
 
@@ -15,7 +15,7 @@ const Routes = () => {
       <PrivateRoute
         component={Dashboard}
         exact
-        layout={Minimal}
+        layout={Main}
         path="/dashboard"
       />
     </Switch>

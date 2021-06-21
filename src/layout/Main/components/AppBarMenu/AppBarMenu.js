@@ -26,6 +26,7 @@ import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneO
  */
 
 import { appBarMainStyles } from "../../../../assets/styles/styles";
+import { LeftDrawer, LogoutDialog } from "./components";
 
 const AppBarMenu = (props) => {
   const { children } = props;
@@ -69,9 +70,11 @@ const AppBarMenu = (props) => {
    * Render Components
    */
 
-  const LogoutMenu = () => {};
+  const LogoutMenu = () => <LogoutDialog onClose={closeDialog} />;
 
-  const DrawerList = (side) => {};
+  const DrawerList = (side) => (
+    <LeftDrawer onClose={toggleDrawer(side, false)} />
+  );
 
   const renderMenu = (
     <Menu
@@ -150,3 +153,9 @@ const AppBarMenu = (props) => {
     </div>
   );
 };
+
+AppBarMenu.propTypes = {
+  children: PropTypes.node,
+};
+
+export default AppBarMenu;

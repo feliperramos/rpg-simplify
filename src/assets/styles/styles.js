@@ -165,7 +165,7 @@ export const registerStyle = makeStyles((theme) => ({
   },
 }));
 
-export const appBarMainStyles = makeStyles(theme => ({
+export const appBarMainStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
@@ -224,5 +224,28 @@ export const appBarMainStyles = makeStyles(theme => ({
     link: {
       fontColor: theme.palette.common.white,
     },
-  }
+  },
+}));
+
+export const leftDrawerStyles = makeStyles((theme) => ({
+  root: {},
+  divider: {
+    margin: theme.spacing(4, 0, 4, 0),
+  },
+}));
+
+export const profileAvatarStyle = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    minHeight: "fit-content",
+  },
+  avatar: {
+    width: 60,
+    height: 60,
+  },
+  name: {
+    marginTop: theme.spacing(1),
+  },
 }));
