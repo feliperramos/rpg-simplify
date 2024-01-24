@@ -9,15 +9,15 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
-import HomeOutlined from "@material-ui/icons/HomeOutlined";
-import NoteAddOutlined from "@material-ui/icons/NoteAddOutlined";
-import SettingsOutlined from "@material-ui/icons/SettingsOutlined";
-import LibraryBooksOutlinedIcon from "@material-ui/icons/LibraryBooksOutlined";
-import InsertChartOutlinedTwoToneIcon from "@material-ui/icons/InsertChartOutlinedTwoTone";
-import BusinessOutlinedIcon from "@material-ui/icons/BusinessOutlined";
-import DescriptionOutlinedIcon from "@material-ui/icons/DescriptionOutlined";
-import GroupOutlinedIcon from "@material-ui/icons/GroupOutlined";
-import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
+import HomeOutlined from "@mui/icons-material/HomeOutlined";
+import NoteAddOutlined from "@mui/icons-material/NoteAddOutlined";
+import SettingsOutlined from "@mui/icons-material/SettingsOutlined";
+import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
+import InsertChartOutlinedTwoToneIcon from "@mui/icons-material/InsertChartOutlinedTwoTone";
+import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import List from "@material-ui/core/List";
 
 /**

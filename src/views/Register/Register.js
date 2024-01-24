@@ -10,7 +10,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import Link from "@material-ui/core/Link";
 
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import { ApiRequest } from "../../api/API";
 import { registerStyle } from "../../assets/styles/styles";
